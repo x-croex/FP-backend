@@ -2,10 +2,9 @@
 
 namespace Loger.LogServices;
 
-internal class FileService<T> : ActionLoger, IFileLog
+internal class FileService : ActionLoger, IFileLog
 {
-    readonly object locker = new object();
-    readonly string LogFilePath = "LogFile.txt";
+    readonly string LogFilePath = "LogFile.log";
 
     public async Task WriteLog(string message)
     {
@@ -15,13 +14,8 @@ internal class FileService<T> : ActionLoger, IFileLog
         {
             try
             {
-                lock (locker)
-                {
-                    using (var writer = File.AppendText(LogFilePath))
-                    {
-                        writer.WriteLine(message);
-                    }
-                }
+                using var writer = File.AppendText(LogFilePath);
+                writer.WriteLine(message);
 
                 writeSucceeded = true;
             }
@@ -34,10 +28,7 @@ internal class FileService<T> : ActionLoger, IFileLog
 
     public async Task<string> ReadLogs()
     {
-        lock (locker)
-        {
             return "";
-        }
     }
 
     public override void Log(string message)

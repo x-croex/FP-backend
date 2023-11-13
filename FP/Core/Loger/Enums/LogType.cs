@@ -5,7 +5,6 @@
         Warning,
         Error,
         Crirtical,
-        Inforamation,
-        Addition
+        Inforamation
     }
 }

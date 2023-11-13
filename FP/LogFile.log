@@ -1,0 +1,73 @@
+14.11.2023 1:59:26 | 100 | Inforamation | FP.Core.Api.Controllers.UserController | API-Request
+14.11.2023 1:59:26 | 100 |			-> Post | Name=login | ObjectId - asd@a | Type - UserDto
+
+14.11.2023 1:59:26 | 100 | Inforamation | FP.Core.Api.Handlers.UserApiHandler | Start to login user
+14.11.2023 1:59:26 | 100 |			-> Login...
+14.11.2023 1:59:26 | 100 |			-> ObjectId - asd@a | Type - UserDto
+
+14.11.2023 1:59:26 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | Start to find user in database
+14.11.2023 1:59:26 | 100 |			-> ObjectId - asd@a | Type - UserDto
+
+14.11.2023 1:59:27 | 100 | Inforamation | FP.Core.Api.Handlers.UserApiHandler | UserDatabaseHandler cannot login user
+14.11.2023 1:59:27 | 100 |			-> ObjectId - asd@a | Type - UserDto
+
+14.11.2023 1:59:27 | 100 | Inforamation | FP.Core.Api.Controllers.UserController | Cannot find user
+14.11.2023 1:59:27 | 100 |			-> Post | Name=login | Invalid email
+
+14.11.2023 1:59:35 | 100 | Inforamation | FP.Core.Api.Controllers.UserController | API-Request
+14.11.2023 1:59:35 | 100 |			-> Post | Name=create | ObjectId - asd@asd | Type - UserDto
+
+14.11.2023 1:59:35 | 100 | Inforamation | FP.Core.Api.Handlers.UserApiHandler | Start to create new user. ObjectId - asd@asd | Type - UserDto
+14.11.2023 1:59:35 | 100 |			-> Registration...
+14.11.2023 1:59:35 | 100 |			-> ObjectId - asd@asd | Type - UserDto
+
+14.11.2023 1:59:35 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | Start to add user in database
+14.11.2023 1:59:35 | 100 |			-> ObjectId - asd@asd | Type - UserDto
+
+14.11.2023 1:59:35 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | Cannot create user
+14.11.2023 1:59:35 | 100 |			-> User with email asd@asd exist
+
+14.11.2023 1:59:35 | 100 | Inforamation | FP.Core.Api.Handlers.UserApiHandler | UserDatabaseHandler cannot create user
+14.11.2023 1:59:35 | 100 |			-> ObjectId - asd@asd | Type - UserDto
+
+14.11.2023 1:59:35 | 100 | Inforamation | FP.Core.Api.Controllers.UserController | Cannot create user
+14.11.2023 1:59:35 | 100 |			-> Invalid email
+
+14.11.2023 1:59:36 | 100 | Inforamation | FP.Core.Api.Controllers.UserController | API-Request
+14.11.2023 1:59:36 | 100 |			-> Post | Name=create | ObjectId - asd@asd | Type - UserDto
+
+14.11.2023 1:59:36 | 100 | Inforamation | FP.Core.Api.Handlers.UserApiHandler | Start to create new user. ObjectId - asd@asd | Type - UserDto
+14.11.2023 1:59:36 | 100 |			-> Registration...
+14.11.2023 1:59:36 | 100 |			-> ObjectId - asd@asd | Type - UserDto
+
+14.11.2023 1:59:36 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | Start to add user in database
+14.11.2023 1:59:36 | 100 |			-> ObjectId - asd@asd | Type - UserDto
+
+14.11.2023 1:59:36 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | Cannot create user
+14.11.2023 1:59:36 | 100 |			-> User with email asd@asd exist
+
+14.11.2023 1:59:36 | 100 | Inforamation | FP.Core.Api.Handlers.UserApiHandler | UserDatabaseHandler cannot create user
+14.11.2023 1:59:36 | 100 |			-> ObjectId - asd@asd | Type - UserDto
+
+14.11.2023 1:59:36 | 100 | Inforamation | FP.Core.Api.Controllers.UserController | Cannot create user
+14.11.2023 1:59:36 | 100 |			-> Invalid email
+
+14.11.2023 1:59:37 | 100 | Inforamation | FP.Core.Api.Controllers.UserController | API-Request
+14.11.2023 1:59:37 | 100 |			-> Post | Name=create | ObjectId - asd@asd | Type - UserDto
+
+14.11.2023 1:59:37 | 100 | Inforamation | FP.Core.Api.Handlers.UserApiHandler | Start to create new user. ObjectId - asd@asd | Type - UserDto
+14.11.2023 1:59:37 | 100 |			-> Registration...
+14.11.2023 1:59:37 | 100 |			-> ObjectId - asd@asd | Type - UserDto
+
+14.11.2023 1:59:37 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | Start to add user in database
+14.11.2023 1:59:37 | 100 |			-> ObjectId - asd@asd | Type - UserDto
+
+14.11.2023 1:59:37 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | Cannot create user
+14.11.2023 1:59:37 | 100 |			-> User with email asd@asd exist
+
+14.11.2023 1:59:37 | 100 | Inforamation | FP.Core.Api.Handlers.UserApiHandler | UserDatabaseHandler cannot create user
+14.11.2023 1:59:37 | 100 |			-> ObjectId - asd@asd | Type - UserDto
+
+14.11.2023 1:59:37 | 100 | Inforamation | FP.Core.Api.Controllers.UserController | Cannot create user
+14.11.2023 1:59:37 | 100 |			-> Invalid email
+

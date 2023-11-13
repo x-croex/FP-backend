@@ -1,9 +1,0 @@
-11.11.2023 23:37:12 | 100 | Inforamation | FP.Core.Api.Controllers.UserController | API-Request
-11.11.2023 23:37:12 | 100 |			-> Post. Name=CreateUser
-11.11.2023 23:37:12 | 100 | Inforamation | FP.Core.Api.Handlers.UserApiHandler | Start to create new user
-11.11.2023 23:37:12 | 100 |			-> Registration...
-11.11.2023 23:37:12 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | Start to add user in database
-11.11.2023 23:37:12 | 100 |			-> FP.Core.Api.ApiDto.UserDto
-11.11.2023 23:37:15 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | User created
-11.11.2023 23:37:15 | 100 | Inforamation | FP.Core.Api.Handlers.UserApiHandler | UserDatabaseHandler created new user
-11.11.2023 23:37:15 | 100 | Inforamation | FP.Core.Api.Controllers.UserController | User created successfully

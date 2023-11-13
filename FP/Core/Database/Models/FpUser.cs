@@ -10,9 +10,4 @@ public class FpUser
     public float BalanceCrypto { get; set; }
     public float BalanceFiat { get; set; }
     public float BalanceInternal { get; set; }
-
-    public override string ToString()
-    {
-        return $"ObjectId - {Id} | Type - FpUser";
-    }
 }

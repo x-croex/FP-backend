@@ -10,24 +10,59 @@ public class UserApiHandler
 
     public UserApiHandler() => _loger = new();
 
-    public async Task<bool> CreateUser(UserDto userData)
+    public async Task<string> CreateUser(UserDto userData)
     {
-        await _loger.LogAction("Start to create new user", Loger.Enums.LogType.Inforamation);
-        await _loger.LogAction("Registration...");
+        _loger.LogAction($"Start to create new user. {userData}", new string[]
+        {
+            "Registration...",
+            $"{userData}"
+        });
 
-        var isSuccess = true;
         var result = await UserDatabaseHandler.CreateUser(userData);
 
-        if (result)
+        if (result == "Ok")
         {
-            await _loger.LogAction("UserDatabaseHandler created new user", Loger.Enums.LogType.Inforamation);
+            _loger.LogAction($"UserDatabaseHandler created new user", new string[] 
+            { 
+                $"{userData}" 
+            });
         }
         else
         {
-            isSuccess = false;
-            await _loger.LogAction("UserDatabaseHandler cannot create user", Loger.Enums.LogType.Inforamation);
+            _loger.LogAction($"UserDatabaseHandler cannot create user", new string[]
+            {
+                $"{userData}"
+            });
         }
 
-        return isSuccess;
+        return result;
+    }
+
+    internal async Task<string> LoginUser(UserDto userData)
+    {
+        _loger.LogAction($"Start to login user", new string[]
+        {
+            "Login...",
+            $"{userData}"
+        });
+
+        var result = await UserDatabaseHandler.LoginUser(userData);
+
+        if (result == "Ok")
+        {
+            _loger.LogAction($"UserDatabaseHandler login user", new string[] 
+            { 
+                $"{userData}" 
+            });
+        }
+        else
+        {
+            _loger.LogAction($"UserDatabaseHandler cannot login user", new string[]
+            {
+                $"{userData}"
+            });
+        }
+
+        return result;
     }
 }

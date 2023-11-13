@@ -1,4 +1,5 @@
-﻿using Loger.Enums;
+﻿using FP.Core.Loger;
+using Loger.Enums;
 using Loger.Interfaces;
 using Loger.LogServices;
 
@@ -7,32 +8,31 @@ namespace Loger;
 public class LogService<T>
 {
     private readonly string? NameSpace;
-    private List<ActionLoger> _logers = new List<ActionLoger>()
+    private readonly List<ActionLoger> _logers = new()
     {
-        new FileService<T>(),
+        new FileService(),
         new ConsoleService(),
     };
 
     public LogService() => NameSpace = typeof(T).FullName;
 
-    public async Task LogAction(string message, LogType logType = LogType.Addition, short trace = 100, Exception exception = null)
+    public void LogAction(string message, string[]? addition = null, LogType logType = LogType.Inforamation, short trace = 100, Exception? exception = null)
     {
-        string logMessage = CastMessage(message, logType, trace, exception);
-        foreach (var item in _logers)
-        {
-            item.Log(logMessage);
-        }
+        string logMessage = CastMessage(message, addition, logType, trace, exception);
+        DataLogger.AddLog(logMessage);
     }
 
-    private string CastMessage(string message, LogType logType = LogType.Inforamation, short trace = 000, Exception exception = null)
+    private string CastMessage(string message, string[]? addition = null, LogType logType = LogType.Inforamation, short trace = 000, Exception? exception = null)
     {
-        string logMessage = "";
-        if (logType == LogType.Addition)
-            logMessage += $"{DateTime.Now} | {trace} |\t\t\t-> {message}";
-        else
-            logMessage = exception == null ?
-                $"{DateTime.Now} | {trace} | {logType} | {NameSpace} | {message}" :
-                $"{DateTime.Now} | {trace} | {logType} | {NameSpace} | {message} | {exception}";
+        string logMessage = exception == null ?
+                $"{DateTime.Now} | {trace} | {logType} | {NameSpace} | {message}\n" :
+                $"{DateTime.Now} | {trace} | {logType} | {NameSpace} | {message} | {exception}\n";
+
+        if (addition != null)
+            foreach (var item in addition)
+            {
+                logMessage += $"{DateTime.Now} | {trace} |\t\t\t-> {item}\n";
+            }
 
         return logMessage;
     }
