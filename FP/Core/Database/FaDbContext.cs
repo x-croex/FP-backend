@@ -6,7 +6,8 @@ namespace FP.Core.Database;
 
 public class FpDbContext : DbContext
 {
-    public DbSet<FpUser> Users { get; set; }
+    public DbSet<User> Users { get; set; }
+    public DbSet<Pack> Packs { get; set; }
     public FpDbContext(DbContextOptions<FpDbContext> dbContextOptions) : base(dbContextOptions)
     { 
 

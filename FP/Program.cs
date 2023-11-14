@@ -14,7 +14,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<FpDbContext>(o => o.UseNpgsql(builder.Configuration["ConnectionStrings:string"]));
 builder.Services.AddScoped<UserDatabaseHandler>();
-builder.Services.AddTransient<IPasswordHasher<FpUser>, PasswordHasher<FpUser>>();
+builder.Services.AddScoped<PackDatabaseHandler>();
+builder.Services.AddTransient<IPasswordHasher<User>, PasswordHasher<User>>();
 var app = builder.Build();
 
 DataLogger.StartLogging();

@@ -1,37 +1,35 @@
 ﻿using FP.Core.Api.ApiDto;
+using FP.Core.Api.Controllers;
 using FP.Core.Database.Models;
 using Loger;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace FP.Core.Database.Handlers;
 
 public class UserDatabaseHandler
 {
-    public static LogService<UserDatabaseHandler> _loger = new();
+	private readonly ILogger<UserController> _logger;
 	private readonly FpDbContext _dbContext;
 	private readonly IServiceProvider _serviceProvider;
-	public UserDatabaseHandler(FpDbContext dbContext, IServiceProvider service)
+	public UserDatabaseHandler(FpDbContext dbContext, IServiceProvider service, ILogger<UserController> logger)
 	{
 		_dbContext = dbContext;
 		_serviceProvider = service;
+		_logger = logger;
 	}
 
-	public async Task<string> CreateUser(UserDto userData)
+	public async Task<User?> CreateUser(UserDto userData)
 	{
-		_loger.LogAction("Start to add user in database", new string[]
-		{
-		$"{userData}"
-		});
+		_logger.LogInformation("Start to add user in database{}", userData);
 
 		string status = "Ok";
-		var hasher = _serviceProvider.GetRequiredService<IPasswordHasher<FpUser>>();
-		FpUser user = new()
+		var hasher = _serviceProvider.GetRequiredService<IPasswordHasher<User>>();
+		User user = new()
 		{
 			Email = userData.Email,
 			Name = userData.Name,
-		
-			
 		};
 		user.Passwordhash = hasher.HashPassword(user, userData.Passwordhash);
 
@@ -42,40 +40,37 @@ public class UserDatabaseHandler
 			{
 				await _dbContext.Users.AddAsync(user);
 				await _dbContext.SaveChangesAsync();
-				_loger.LogAction("User created");
+				_logger.LogInformation("User created");
+				return user;
 			}
 			else
 			{
-				_loger.LogAction("Cannot create user", new string[]
-				{
-				$"User with email {userData.Email} exists"
-				});
+				_logger.LogInformation("Cannot create user with email {Email}", user.Email);
 				status = "Invalid email";
+				return null;
 			}
 		}
 		catch (Exception ex)
 		{
 			status = "Server error";
-			_loger.LogAction("Cannot create user", exception: ex);
+			_logger.LogInformation(ex, "Cannot create user");
+			return null;
 		}
 
-		return status;
+
 	}
 
-	public async Task<string> LoginUser(UserDto userData)
+	public async Task<User?> LoginUser(UserDto userData)
 	{
-		_loger.LogAction("Start to find user in database", new string[]
-		{
-		$"{userData}"
-		});
+		_logger.LogInformation("Start to find user in database {userData}", userData);
 
 		string status = "Ok";
 
-		FpUser user = new()
+		User user = new()
 		{
 			Email = userData.Email
 		};
-		var hasher = _serviceProvider.GetRequiredService<IPasswordHasher<FpUser>>();
+		var hasher = _serviceProvider.GetRequiredService<IPasswordHasher<User>>();
 		try
 		{
 			var result = await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == user.Email);
@@ -83,7 +78,7 @@ public class UserDatabaseHandler
 			{
 				if (hasher.VerifyHashedPassword(result, result.Passwordhash, userData.Passwordhash) == PasswordVerificationResult.Success)
 				{
-					_loger.LogAction("User found");
+					_logger.LogInformation("User found");
 				}
 				else
 				{
@@ -94,13 +89,16 @@ public class UserDatabaseHandler
 			{
 				status = "Invalid email";
 			}
+			_logger.LogInformation(status);
+			return result;
 		}
 		catch (Exception ex)
 		{
-			_loger.LogAction("Cannot find user", exception: ex);
+			_logger.LogInformation(ex, "Cannot create user");
 			status = "Server error";
+			return null;
 		}
 
-		return status;
 	}
+	
 }

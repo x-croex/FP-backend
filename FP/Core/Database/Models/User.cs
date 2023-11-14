@@ -1,6 +1,6 @@
 ﻿namespace FP.Core.Database.Models;
 
-public class FpUser
+public class User
 {
     public int Id { get; set; }
     public int Rang { get; set; }
@@ -10,4 +10,6 @@ public class FpUser
     public float BalanceCrypto { get; set; }
     public float BalanceFiat { get; set; }
     public float BalanceInternal { get; set; }
+
+    public virtual List<Pack> Pack { get; set; }
 }

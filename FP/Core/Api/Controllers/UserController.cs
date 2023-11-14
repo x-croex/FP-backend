@@ -26,7 +26,7 @@ public class UserController : ControllerBase
     {
         var result = await _databaseHandler.CreateUser(userData);
 
-        if(result == "Ok")
+        if(result != null)
         {
             _loger.LogInformation("User created successfully {result}", result);
             return Ok(result);
@@ -45,7 +45,7 @@ public class UserController : ControllerBase
 
         var result = await _databaseHandler.LoginUser(userData);
 
-        if (result == "Ok")
+        if (result != null)
         {
             _loger.LogInformation("User found successfully {result}", result);
             return Ok(result);
