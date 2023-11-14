@@ -1,7 +1,9 @@
 using FP.Core.Api.ApiDto;
 using FP.Core.Api.Handlers;
+using FP.Core.Database.Handlers;
 using Loger;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity;
 
 namespace FP.Core.Api.Controllers;
 
@@ -9,32 +11,29 @@ namespace FP.Core.Api.Controllers;
 [Route("api/[controller]")]
 public class UserController : ControllerBase
 {
-    private LogService<UserController> _loger;
+    private readonly ILogger<UserController> _loger;
+    private readonly UserDatabaseHandler _databaseHandler;
 
-    public UserController() => _loger = new();
+	public UserController(UserDatabaseHandler databaseHandler, ILogger<UserController> logger)
+	{
+		_databaseHandler = databaseHandler;
+        _loger = logger;
+	}
+
 
     [HttpPost("create")]
     public async Task<IActionResult> CreateUserAsync([FromBody] UserDto userData)
     {
-        _loger.LogAction("API-Request", new string[]
-        {
-            $"Post | Name=create | {userData}"
-        });
-
-        UserApiHandler handler = new();
-        var result = await handler.CreateUser(userData);
+        var result = await _databaseHandler.CreateUser(userData);
 
         if(result == "Ok")
         {
-            _loger.LogAction($"User created successfully");
+            _loger.LogInformation("User created successfully {result}", result);
             return Ok(result);
         }
         else
         {
-            _loger.LogAction($"Cannot create user", new string[]
-            {
-                $"{result}"
-            });
+            _loger.LogInformation("Cannot create user {result}", result);
             return BadRequest(result);
         }
     }
@@ -42,25 +41,18 @@ public class UserController : ControllerBase
     [HttpPost("login")]
     public async Task<IActionResult> LoginUserAsync([FromBody] UserDto userData)
     {
-        _loger.LogAction("API-Request", new string[]
-        {
-            $"Post | Name=login | {userData}"
-        });
+        _loger.LogInformation("API-Request \n Post | Name=login | {userData}", userData);
 
-        UserApiHandler handler = new();
-        var result = await handler.LoginUser(userData);
+        var result = await _databaseHandler.LoginUser(userData);
 
         if (result == "Ok")
         {
-            _loger.LogAction($"User found successfully");
+            _loger.LogInformation("User found successfully {result}", result);
             return Ok(result);
         }
         else
         {
-            _loger.LogAction($"Cannot find user", new string[]
-            {
-                $"Post | Name=login | {result}"
-            });
+            _loger.LogInformation("Cannot find user {result}", result);
             return BadRequest(result);
         }
     }

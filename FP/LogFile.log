@@ -214,3 +214,75 @@
 
 14.11.2023 17:42:56 | 100 | Inforamation | FP.Core.Api.Controllers.UserController | User created successfully
 
+14.11.2023 18:10:31 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | Start to add user in database
+14.11.2023 18:10:31 | 100 |			-> ObjectId - pasha@gmail.com | Type - UserDto
+
+14.11.2023 18:10:31 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | Cannot create user | System.InvalidOperationException: No database provider has been configured for this DbContext. A provider can be configured by overriding the 'DbContext.OnConfiguring' method or by using 'AddDbContext' on the application service provider. If 'AddDbContext' is used, then also ensure that your DbContext type accepts a DbContextOptions<TContext> object in its constructor and passes it to the base constructor for DbContext.
+   at Microsoft.EntityFrameworkCore.Internal.DbContextServices.Initialize(IServiceProvider scopedProvider, DbContextOptions contextOptions, DbContext context)
+   at Microsoft.EntityFrameworkCore.DbContext.get_ContextServices()
+   at Microsoft.EntityFrameworkCore.DbContext.get_Model()
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.get_EntityType()
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.CheckState()
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.get_EntityQueryable()
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.System.Linq.IQueryable.get_Provider()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ExecuteAsync[TSource,TResult](MethodInfo operatorMethodInfo, IQueryable`1 source, Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ExecuteAsync[TSource,TResult](MethodInfo operatorMethodInfo, IQueryable`1 source, LambdaExpression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.AnyAsync[TSource](IQueryable`1 source, Expression`1 predicate, CancellationToken cancellationToken)
+   at FP.Core.Database.Handlers.UserDatabaseHandler.CreateUser(UserDto userData) in C:\Users\legen\source\repos\FP-backend\FP\Core\Database\Handlers\UserDatabaseHandler.cs:line 40
+
+14.11.2023 18:13:47 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | Start to add user in database
+14.11.2023 18:13:47 | 100 |			-> ObjectId - string | Type - UserDto
+
+14.11.2023 18:13:48 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | Cannot create user
+14.11.2023 18:13:48 | 100 |			-> User with email string exists
+
+14.11.2023 18:13:55 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | Start to add user in database
+14.11.2023 18:13:55 | 100 |			-> ObjectId - string123 | Type - UserDto
+
+14.11.2023 18:13:55 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | User created
+
+14.11.2023 18:23:08 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | Start to find user in database
+14.11.2023 18:23:08 | 100 |			-> ObjectId - string123 | Type - UserDto
+
+14.11.2023 18:23:09 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | User found
+
+14.11.2023 18:23:17 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | Start to find user in database
+14.11.2023 18:23:17 | 100 |			-> ObjectId - string123 | Type - UserDto
+
+14.11.2023 18:30:13 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | Start to find user in database
+14.11.2023 18:30:13 | 100 |			-> ObjectId - string | Type - UserDto
+
+14.11.2023 18:30:14 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | Cannot find user | System.FormatException: The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters.
+   at System.Convert.FromBase64CharPtr(Char* inputPtr, Int32 inputLength)
+   at System.Convert.FromBase64String(String s)
+   at Microsoft.AspNetCore.Identity.PasswordHasher`1.VerifyHashedPassword(TUser user, String hashedPassword, String providedPassword)
+   at FP.Core.Database.Handlers.UserDatabaseHandler.LoginUser(UserDto userData) in C:\Users\legen\source\repos\FP-backend\FP\Core\Database\Handlers\UserDatabaseHandler.cs:line 84
+
+14.11.2023 18:30:52 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | Start to find user in database
+14.11.2023 18:30:52 | 100 |			-> ObjectId - string | Type - UserDto
+
+14.11.2023 18:31:46 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | Cannot find user | System.FormatException: The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters.
+   at System.Convert.FromBase64CharPtr(Char* inputPtr, Int32 inputLength)
+   at System.Convert.FromBase64String(String s)
+   at Microsoft.AspNetCore.Identity.PasswordHasher`1.VerifyHashedPassword(TUser user, String hashedPassword, String providedPassword)
+   at FP.Core.Database.Handlers.UserDatabaseHandler.LoginUser(UserDto userData) in C:\Users\legen\source\repos\FP-backend\FP\Core\Database\Handlers\UserDatabaseHandler.cs:line 84
+
+14.11.2023 18:31:52 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | Start to find user in database
+14.11.2023 18:31:52 | 100 |			-> ObjectId - string | Type - UserDto
+
+14.11.2023 18:32:09 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | Cannot find user | System.FormatException: The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters.
+   at System.Convert.FromBase64CharPtr(Char* inputPtr, Int32 inputLength)
+   at System.Convert.FromBase64String(String s)
+   at Microsoft.AspNetCore.Identity.PasswordHasher`1.VerifyHashedPassword(TUser user, String hashedPassword, String providedPassword)
+   at FP.Core.Database.Handlers.UserDatabaseHandler.LoginUser(UserDto userData) in C:\Users\legen\source\repos\FP-backend\FP\Core\Database\Handlers\UserDatabaseHandler.cs:line 84
+
+14.11.2023 18:32:12 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | Start to find user in database
+14.11.2023 18:32:12 | 100 |			-> ObjectId - string | Type - UserDto
+
+14.11.2023 18:32:16 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | User found
+
+14.11.2023 18:39:27 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | Start to find user in database
+14.11.2023 18:39:27 | 100 |			-> ObjectId - string | Type - UserDto
+
+14.11.2023 18:39:31 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | User found
+

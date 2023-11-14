@@ -7,9 +7,12 @@ namespace FP.Core.Database;
 public class FpDbContext : DbContext
 {
     public DbSet<FpUser> Users { get; set; }
+    public FpDbContext(DbContextOptions<FpDbContext> dbContextOptions) : base(dbContextOptions)
+    { 
 
+    }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseNpgsql(ApplicationData.ConnectionString);
+      
     }
 }

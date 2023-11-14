@@ -10,59 +10,59 @@ public class UserApiHandler
 
     public UserApiHandler() => _loger = new();
 
-    public async Task<string> CreateUser(UserDto userData)
-    {
-        _loger.LogAction($"Start to create new user. {userData}", new string[]
-        {
-            "Registration...",
-            $"{userData}"
-        });
+    //public async Task<string> CreateUser(UserDto userData)
+    //{
+    //    _loger.LogAction($"Start to create new user. {userData}", new string[]
+    //    {
+    //        "Registration...",
+    //        $"{userData}"
+    //    });
 
-        var result = await UserDatabaseHandler.CreateUser(userData);
+    //    var result = await UserDatabaseHandler.CreateUser(userData);
 
-        if (result == "Ok")
-        {
-            _loger.LogAction($"UserDatabaseHandler created new user", new string[] 
-            { 
-                $"{userData}" 
-            });
-        }
-        else
-        {
-            _loger.LogAction($"UserDatabaseHandler cannot create user", new string[]
-            {
-                $"{userData}"
-            });
-        }
+    //    if (result == "Ok")
+    //    {
+    //        _loger.LogAction($"UserDatabaseHandler created new user", new string[] 
+    //        { 
+    //            $"{userData}" 
+    //        });
+    //    }
+    //    else
+    //    {
+    //        _loger.LogAction($"UserDatabaseHandler cannot create user", new string[]
+    //        {
+    //            $"{userData}"
+    //        });
+    //    }
 
-        return result;
-    }
+    //    return result;
+    //}
 
-    internal async Task<string> LoginUser(UserDto userData)
-    {
-        _loger.LogAction($"Start to login user", new string[]
-        {
-            "Login...",
-            $"{userData}"
-        });
+    //internal async Task<string> LoginUser(UserDto userData)
+    //{
+    //    _loger.LogAction($"Start to login user", new string[]
+    //    {
+    //        "Login...",
+    //        $"{userData}"
+    //    });
 
-        var result = await UserDatabaseHandler.LoginUser(userData);
+    //    var result = await UserDatabaseHandler.LoginUser(userData);
 
-        if (result == "Ok")
-        {
-            _loger.LogAction($"UserDatabaseHandler login user", new string[] 
-            { 
-                $"{userData}" 
-            });
-        }
-        else
-        {
-            _loger.LogAction($"UserDatabaseHandler cannot login user", new string[]
-            {
-                $"{userData}"
-            });
-        }
+    //    if (result == "Ok")
+    //    {
+    //        _loger.LogAction($"UserDatabaseHandler login user", new string[] 
+    //        { 
+    //            $"{userData}" 
+    //        });
+    //    }
+    //    else
+    //    {
+    //        _loger.LogAction($"UserDatabaseHandler cannot login user", new string[]
+    //        {
+    //            $"{userData}"
+    //        });
+    //    }
 
-        return result;
-    }
+    //    return result;
+    //}
 }

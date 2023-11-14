@@ -9,8 +9,15 @@ namespace FP.Core.Database.Handlers;
 public class UserDatabaseHandler
 {
     public static LogService<UserDatabaseHandler> _loger = new();
+	private readonly FpDbContext _dbContext;
+	private readonly IServiceProvider _serviceProvider;
+	public UserDatabaseHandler(FpDbContext dbContext, IServiceProvider service)
+	{
+		_dbContext = dbContext;
+		_serviceProvider = service;
+	}
 
-	public static async Task<string> CreateUser(UserDto userData)
+	public async Task<string> CreateUser(UserDto userData)
 	{
 		_loger.LogAction("Start to add user in database", new string[]
 		{
@@ -18,24 +25,23 @@ public class UserDatabaseHandler
 		});
 
 		string status = "Ok";
-		PasswordHasher<UserDto> hasher = new PasswordHasher<UserDto>();
-		userData.Passwordhash = hasher.HashPassword(userData, userData.Passwordhash);
-		using FpDbContext context = new();
+		var hasher = _serviceProvider.GetRequiredService<IPasswordHasher<FpUser>>();
 		FpUser user = new()
 		{
 			Email = userData.Email,
 			Name = userData.Name,
 		
-			Passwordhash = userData.Passwordhash
+			
 		};
+		user.Passwordhash = hasher.HashPassword(user, userData.Passwordhash);
 
 		try
 		{
-			var result = await context.Users.AnyAsync(u => u.Email == user.Email);
+			var result = await _dbContext.Users.AnyAsync(u => u.Email == user.Email);
 			if (!result)
 			{
-				await context.Users.AddAsync(user);
-				await context.SaveChangesAsync();
+				await _dbContext.Users.AddAsync(user);
+				await _dbContext.SaveChangesAsync();
 				_loger.LogAction("User created");
 			}
 			else
@@ -56,7 +62,7 @@ public class UserDatabaseHandler
 		return status;
 	}
 
-	public static async Task<string> LoginUser(UserDto userData)
+	public async Task<string> LoginUser(UserDto userData)
 	{
 		_loger.LogAction("Start to find user in database", new string[]
 		{
@@ -65,18 +71,17 @@ public class UserDatabaseHandler
 
 		string status = "Ok";
 
-		using FpDbContext context = new();
 		FpUser user = new()
 		{
 			Email = userData.Email
 		};
-
+		var hasher = _serviceProvider.GetRequiredService<IPasswordHasher<FpUser>>();
 		try
 		{
-			var result = await context.Users.FirstOrDefaultAsync(u => u.Email == user.Email);
+			var result = await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == user.Email);
 			if (result != null)
 			{
-				if (BCrypt.Net.BCrypt.Verify(userData.Passwordhash, result.Passwordhash))
+				if (hasher.VerifyHashedPassword(result, result.Passwordhash, userData.Passwordhash) == PasswordVerificationResult.Success)
 				{
 					_loger.LogAction("User found");
 				}
