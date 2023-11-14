@@ -16,14 +16,14 @@ namespace FP.Core.Database.Handlers
 			_logger = logger;
 		}
 
-		public async Task<Pack?> CreatePack(PackDto packDto)
+		public async Task<Pack?> CreatePack(PackDto packDto, int userId)
 		{
 			_logger.LogInformation("Start to add pack in database end date: {endDate}", packDto.EndDate);
 
 			string status = "Ok";
 			Pack pack = new Pack()
 			{
-				UserId = packDto.UserId,
+				UserId = userId,
 				EndDate = packDto.EndDate,
 				DealSum = packDto.DealSum,
 				StartDate = DateTime.UtcNow

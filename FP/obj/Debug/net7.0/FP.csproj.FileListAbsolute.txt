@@ -85,3 +85,15 @@ C:\Users\legen\source\repos\FP-backend\FP\obj\Debug\net7.0\FP.pdb
 C:\Users\legen\source\repos\FP-backend\FP\obj\Debug\net7.0\FP.genruntimeconfig.cache
 C:\Users\legen\source\repos\FP-backend\FP\obj\Debug\net7.0\ref\FP.dll
 C:\Users\legen\source\repos\FP-backend\FP\bin\Debug\net7.0\BCrypt.Net-Next.dll
+F:\Projects\C++\FP\FP\bin\Debug\net7.0\BCrypt.Net-Next.dll
+F:\Projects\C++\FP\FP\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
+F:\Projects\C++\FP\FP\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+F:\Projects\C++\FP\FP\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+F:\Projects\C++\FP\FP\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+F:\Projects\C++\FP\FP\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
+F:\Projects\C++\FP\FP\bin\Debug\net7.0\System.Web.Cors.dll
+F:\Projects\C++\FP\FP\bin\Debug\net7.0\System.Net.Http.Formatting.dll
+F:\Projects\C++\FP\FP\bin\Debug\net7.0\System.Web.Http.dll
+F:\Projects\C++\FP\FP\bin\Debug\net7.0\System.Web.Http.Cors.dll
+F:\Projects\C++\FP\FP\bin\Debug\net7.0\Newtonsoft.Json.dll
+F:\Projects\C++\FP\FP\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll
