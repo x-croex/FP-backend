@@ -42,7 +42,6 @@ public class UserController : ControllerBase
     public async Task<IActionResult> LoginUserAsync([FromBody] UserDto userData)
     {
         _loger.LogInformation("API-Request \n Post | Name=login | {userData}", userData);
-
         var result = await _databaseHandler.LoginUser(userData);
 
         if (result != null)

@@ -5,6 +5,7 @@ using Loger;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using System.Text.Json;
 
 namespace FP.Core.Database.Handlers;
 
@@ -20,7 +21,7 @@ public class UserDatabaseHandler
 		_logger = logger;
 	}
 
-	public async Task<User?> CreateUser(UserDto userData)
+	public async Task<string> CreateUser(UserDto userData)
 	{
 		_logger.LogInformation("Start to add user in database{}", userData);
 
@@ -41,23 +42,20 @@ public class UserDatabaseHandler
 				await _dbContext.Users.AddAsync(user);
 				await _dbContext.SaveChangesAsync();
 				_logger.LogInformation("User created");
-				return user;
 			}
 			else
 			{
 				_logger.LogInformation("Cannot create user with email {Email}", user.Email);
 				status = "Invalid email";
-				return null;
 			}
 		}
 		catch (Exception ex)
 		{
 			status = "Server error";
 			_logger.LogInformation(ex, "Cannot create user");
-			return null;
 		}
-
-
+		status = JsonSerializer.Serialize(user);
+		return status;
 	}
 
 	public async Task<User?> LoginUser(UserDto userData)

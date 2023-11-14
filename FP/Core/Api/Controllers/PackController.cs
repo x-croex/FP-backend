@@ -12,13 +12,13 @@ namespace FP.Core.Api.Controllers;
 [Route("api/[controller]")]
 public class PackController : ControllerBase
 {
-	private readonly ILogger<PackController> _loger;
+	private readonly ILogger<PackController> _logger;
 	private readonly PackDatabaseHandler _databaseHandler;
 
 	public PackController(PackDatabaseHandler databaseHandler, ILogger<PackController> logger)
 	{
 		_databaseHandler = databaseHandler;
-		_loger = logger;
+		_logger = logger;
 	}
 
 
@@ -29,12 +29,12 @@ public class PackController : ControllerBase
 
 		if (result != null)
 		{
-			_loger.LogInformation("Pack created successfully {result}", result.ID);
+			_logger.LogInformation("Pack created successfully {result}", result.ID);
 			return Ok(result);
 		}
 		else
 		{
-			_loger.LogInformation("Cannot create user {result}", result);
+			_logger.LogInformation("Cannot create user {result}", result);
 			return BadRequest(result);
 		}
 	}
@@ -42,18 +42,18 @@ public class PackController : ControllerBase
 	[HttpGet("get/{id}")]
 	public async Task<IActionResult> GetPackAsync(int id)
 	{
-		_loger.LogInformation("API-Request \n Post | Name=login | {id}", id);
+		_logger.LogInformation("API-Request \n Post | Name=login | {id}", id);
 
 		var pack = await _databaseHandler.GetPackById(id);
 
 		if (pack != null)
 		{
-			_loger.LogInformation("User found successfully {result}", pack);
+			_logger.LogInformation("User found successfully {result}", pack);
 			return Ok(pack);
 		}
 		else
 		{
-			_loger.LogInformation("Cannot find user {result}", pack);
+			_logger.LogInformation("Cannot find user {result}", pack);
 			return BadRequest(pack);
 		}
 	}
