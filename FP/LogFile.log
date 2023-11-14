@@ -71,3 +71,146 @@
 14.11.2023 1:59:37 | 100 | Inforamation | FP.Core.Api.Controllers.UserController | Cannot create user
 14.11.2023 1:59:37 | 100 |			-> Invalid email
 
+14.11.2023 16:37:51 | 100 | Inforamation | FP.Core.Api.Controllers.UserController | API-Request
+14.11.2023 16:37:51 | 100 |			-> Post | Name=create | ObjectId - string | Type - UserDto
+
+14.11.2023 16:37:51 | 100 | Inforamation | FP.Core.Api.Handlers.UserApiHandler | Start to create new user. ObjectId - string | Type - UserDto
+14.11.2023 16:37:51 | 100 |			-> Registration...
+14.11.2023 16:37:51 | 100 |			-> ObjectId - string | Type - UserDto
+
+14.11.2023 16:37:51 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | Start to add user in database
+14.11.2023 16:37:51 | 100 |			-> ObjectId - string | Type - UserDto
+
+14.11.2023 16:37:52 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | Cannot create user | Npgsql.PostgresException (0x80004005): 3D000: ���� ������ "FP" �� ����������
+   at Npgsql.Internal.NpgsqlConnector.<ReadMessage>g__ReadMessageLong|234_0(NpgsqlConnector connector, Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|216_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|28_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|45_0(Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at FP.Core.Database.Handlers.UserDatabaseHandler.CreateUser(UserDto userData) in C:\Users\legen\source\repos\FP-backend\FP\Core\Database\Handlers\UserDatabaseHandler.cs:line 30
+  Exception data:
+    Severity: �����
+    SqlState: 3D000
+    MessageText: ���� ������ "FP" �� ����������
+    File: postinit.c
+    Line: 1021
+    Routine: InitPostgres
+
+14.11.2023 16:37:52 | 100 | Inforamation | FP.Core.Api.Handlers.UserApiHandler | UserDatabaseHandler cannot create user
+14.11.2023 16:37:52 | 100 |			-> ObjectId - string | Type - UserDto
+
+14.11.2023 16:37:52 | 100 | Inforamation | FP.Core.Api.Controllers.UserController | Cannot create user
+14.11.2023 16:37:52 | 100 |			-> Server error
+
+14.11.2023 16:38:47 | 100 | Inforamation | FP.Core.Api.Controllers.UserController | API-Request
+14.11.2023 16:38:47 | 100 |			-> Post | Name=create | ObjectId - string | Type - UserDto
+
+14.11.2023 16:38:48 | 100 | Inforamation | FP.Core.Api.Handlers.UserApiHandler | Start to create new user. ObjectId - string | Type - UserDto
+14.11.2023 16:38:48 | 100 |			-> Registration...
+14.11.2023 16:38:48 | 100 |			-> ObjectId - string | Type - UserDto
+
+14.11.2023 16:38:48 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | Start to add user in database
+14.11.2023 16:38:48 | 100 |			-> ObjectId - string | Type - UserDto
+
+14.11.2023 16:38:49 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | Cannot create user | Npgsql.PostgresException (0x80004005): 3D000: ���� ������ "FP" �� ����������
+   at Npgsql.Internal.NpgsqlConnector.<ReadMessage>g__ReadMessageLong|234_0(NpgsqlConnector connector, Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|216_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|28_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|45_0(Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at FP.Core.Database.Handlers.UserDatabaseHandler.CreateUser(UserDto userData) in C:\Users\legen\source\repos\FP-backend\FP\Core\Database\Handlers\UserDatabaseHandler.cs:line 30
+  Exception data:
+    Severity: �����
+    SqlState: 3D000
+    MessageText: ���� ������ "FP" �� ����������
+    File: postinit.c
+    Line: 1021
+    Routine: InitPostgres
+
+14.11.2023 16:38:49 | 100 | Inforamation | FP.Core.Api.Handlers.UserApiHandler | UserDatabaseHandler cannot create user
+14.11.2023 16:38:49 | 100 |			-> ObjectId - string | Type - UserDto
+
+14.11.2023 16:39:11 | 100 | Inforamation | FP.Core.Api.Controllers.UserController | Cannot create user
+14.11.2023 16:39:11 | 100 |			-> Server error
+
+14.11.2023 16:40:01 | 100 | Inforamation | FP.Core.Api.Controllers.UserController | API-Request
+14.11.2023 16:40:01 | 100 |			-> Post | Name=create | ObjectId - string | Type - UserDto
+
+14.11.2023 16:40:06 | 100 | Inforamation | FP.Core.Api.Handlers.UserApiHandler | Start to create new user. ObjectId - string | Type - UserDto
+14.11.2023 16:40:06 | 100 |			-> Registration...
+14.11.2023 16:40:06 | 100 |			-> ObjectId - string | Type - UserDto
+
+14.11.2023 16:40:07 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | Start to add user in database
+14.11.2023 16:40:07 | 100 |			-> ObjectId - string | Type - UserDto
+
+14.11.2023 16:54:51 | 100 | Inforamation | FP.Core.Api.Controllers.UserController | API-Request
+14.11.2023 16:54:51 | 100 |			-> Post | Name=create | ObjectId - string | Type - UserDto
+
+14.11.2023 16:54:52 | 100 | Inforamation | FP.Core.Api.Handlers.UserApiHandler | Start to create new user. ObjectId - string | Type - UserDto
+14.11.2023 16:54:52 | 100 |			-> Registration...
+14.11.2023 16:54:52 | 100 |			-> ObjectId - string | Type - UserDto
+
+14.11.2023 16:54:53 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | Start to add user in database
+14.11.2023 16:54:53 | 100 |			-> ObjectId - string | Type - UserDto
+
+14.11.2023 16:54:54 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | User created
+
+14.11.2023 16:54:55 | 100 | Inforamation | FP.Core.Api.Handlers.UserApiHandler | UserDatabaseHandler created new user
+14.11.2023 16:54:55 | 100 |			-> ObjectId - string | Type - UserDto
+
+14.11.2023 16:54:57 | 100 | Inforamation | FP.Core.Api.Controllers.UserController | User created successfully
+
+14.11.2023 16:55:51 | 100 | Inforamation | FP.Core.Api.Controllers.UserController | API-Request
+14.11.2023 16:55:51 | 100 |			-> Post | Name=login | ObjectId - string | Type - UserDto
+
+14.11.2023 16:55:51 | 100 | Inforamation | FP.Core.Api.Handlers.UserApiHandler | Start to login user
+14.11.2023 16:55:51 | 100 |			-> Login...
+14.11.2023 16:55:51 | 100 |			-> ObjectId - string | Type - UserDto
+
+14.11.2023 16:55:51 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | Start to find user in database
+14.11.2023 16:55:51 | 100 |			-> ObjectId - string | Type - UserDto
+
+14.11.2023 16:55:54 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | User found
+
+14.11.2023 16:55:54 | 100 | Inforamation | FP.Core.Api.Handlers.UserApiHandler | UserDatabaseHandler login user
+14.11.2023 16:55:54 | 100 |			-> ObjectId - string | Type - UserDto
+
+14.11.2023 16:55:54 | 100 | Inforamation | FP.Core.Api.Controllers.UserController | User found successfully
+
+14.11.2023 17:42:55 | 100 | Inforamation | FP.Core.Api.Controllers.UserController | API-Request
+14.11.2023 17:42:55 | 100 |			-> Post | Name=create | ObjectId - string1 | Type - UserDto
+
+14.11.2023 17:42:55 | 100 | Inforamation | FP.Core.Api.Handlers.UserApiHandler | Start to create new user. ObjectId - string1 | Type - UserDto
+14.11.2023 17:42:55 | 100 |			-> Registration...
+14.11.2023 17:42:55 | 100 |			-> ObjectId - string1 | Type - UserDto
+
+14.11.2023 17:42:55 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | Start to add user in database
+14.11.2023 17:42:55 | 100 |			-> ObjectId - string1 | Type - UserDto
+
+14.11.2023 17:42:56 | 100 | Inforamation | FP.Core.Database.Handlers.UserDatabaseHandler | User created
+
+14.11.2023 17:42:56 | 100 | Inforamation | FP.Core.Api.Handlers.UserApiHandler | UserDatabaseHandler created new user
+14.11.2023 17:42:56 | 100 |			-> ObjectId - string1 | Type - UserDto
+
+14.11.2023 17:42:56 | 100 | Inforamation | FP.Core.Api.Controllers.UserController | User created successfully
+
