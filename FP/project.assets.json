@@ -2104,7 +2104,7 @@
       "projectName": "FP",
       "projectPath": "C:\\Users\\legen\\source\\repos\\FP-backend\\FP\\FP.csproj",
       "packagesPath": "C:\\Users\\legen\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\legen\\source\\repos\\FP-backend\\FP\\obj\\",
+      "outputPath": "C:\\Users\\legen\\source\\repos\\FP-backend\\FP",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "E:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

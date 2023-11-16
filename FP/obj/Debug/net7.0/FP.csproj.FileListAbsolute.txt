@@ -97,3 +97,16 @@ F:\Projects\C++\FP\FP\bin\Debug\net7.0\System.Web.Http.dll
 F:\Projects\C++\FP\FP\bin\Debug\net7.0\System.Web.Http.Cors.dll
 F:\Projects\C++\FP\FP\bin\Debug\net7.0\Newtonsoft.Json.dll
 F:\Projects\C++\FP\FP\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll
+C:\Users\legen\source\repos\FP-backend\FP\bin\Debug\net7.0\System.Web.Cors.dll
+C:\Users\legen\source\repos\FP-backend\FP\bin\Debug\net7.0\System.Net.Http.Formatting.dll
+C:\Users\legen\source\repos\FP-backend\FP\bin\Debug\net7.0\System.Web.Http.dll
+C:\Users\legen\source\repos\FP-backend\FP\bin\Debug\net7.0\System.Web.Http.Cors.dll
+C:\Users\legen\source\repos\FP-backend\FP\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\legen\source\repos\FP-backend\FP\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\legen\source\repos\FP-backend\FP\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\legen\source\repos\FP-backend\FP\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\legen\source\repos\FP-backend\FP\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Users\legen\source\repos\FP-backend\FP\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll
+C:\Users\legen\source\repos\FP-backend\FP\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\legen\source\repos\FP-backend\FP\bin\Debug\net7.0\FP.csproj.nuget.dgspec.json
+C:\Users\legen\source\repos\FP-backend\FP\bin\Debug\net7.0\project.assets.json

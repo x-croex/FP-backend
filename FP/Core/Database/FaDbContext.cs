@@ -7,6 +7,7 @@ public class FpDbContext : DbContext
 {
     public DbSet<User> Users { get; set; }
     public DbSet<Pack> Packs { get; set; }
+    public DbSet<PackType> PackTypes { get; set; }
     public FpDbContext(DbContextOptions<FpDbContext> dbContextOptions) : base(dbContextOptions) { }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }
 }
