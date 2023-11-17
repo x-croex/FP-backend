@@ -27,6 +27,7 @@ public class UserController : ControllerBase
     [HttpPost("create")]
     public async Task<IActionResult> CreateUserAsync([FromBody] UserDto userData)
     {
+
         var result = await _databaseHandler.CreateUser(userData);
 
         if(result != null)

@@ -39,12 +39,12 @@ public class PackController : ControllerBase
 
 				if (result != null)
 				{
-					_logger.LogInformation("Pack created successfully {result}", result.ID);
+					_logger.LogInformation("Pack created successfully {result}", result.Id);
 					return Ok(result);
 				}
 				else
 				{
-					_logger.LogInformation("Cannot create user {result}", result);
+					_logger.LogInformation("Cannot create pack {result}", result);
 					return BadRequest(result);
 				}
 			}

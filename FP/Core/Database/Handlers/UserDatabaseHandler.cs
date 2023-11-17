@@ -11,19 +11,22 @@ namespace FP.Core.Database.Handlers;
 
 public class UserDatabaseHandler
 {
-	private readonly ILogger<UserController> _logger;
+	private readonly ILogger<UserDatabaseHandler> _logger;
 	private readonly FpDbContext _dbContext;
 	private readonly IServiceProvider _serviceProvider;
-	public UserDatabaseHandler(FpDbContext dbContext, IServiceProvider service, ILogger<UserController> logger)
+	private readonly WalletDatabaseHandler _walletDatabaseHandler;
+
+	public UserDatabaseHandler(FpDbContext dbContext, WalletDatabaseHandler walletDatabaseHandler, IServiceProvider service, ILogger<UserDatabaseHandler> logger)
 	{
 		_dbContext = dbContext;
 		_serviceProvider = service;
 		_logger = logger;
+		_walletDatabaseHandler = walletDatabaseHandler;
 	}
 
 	public async Task<string> CreateUser(UserDto userData)
 	{
-		_logger.LogInformation("Start to add user in database{}", userData);
+		_logger.LogInformation($"Start to add user in database {userData}");
 
 		string status = "Ok";
 		var hasher = _serviceProvider.GetRequiredService<IPasswordHasher<User>>();
@@ -31,6 +34,8 @@ public class UserDatabaseHandler
 		{
 			Email = userData.Email,
 			Name = userData.Name,
+			BalanceWallet = await _walletDatabaseHandler.CreateWallet(),
+			TopUpWallet = await _walletDatabaseHandler.CreateWallet()
 		};
 		user.Passwordhash = hasher.HashPassword(user, userData.Passwordhash);
 

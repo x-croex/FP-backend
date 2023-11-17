@@ -21,7 +21,7 @@ namespace FP.Core.Database.Handlers
 			_logger.LogInformation("Start to add pack in database end date: {endDate}", packDto.EndDate);
 
 			string status = "Ok";
-			Pack pack = new Pack()
+			Pack pack = new()
 			{
 				UserId = userId,
 				EndDate = packDto.EndDate,

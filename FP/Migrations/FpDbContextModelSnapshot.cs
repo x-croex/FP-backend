@@ -24,11 +24,11 @@ namespace FP.Migrations
 
             modelBuilder.Entity("FP.Core.Database.Models.Pack", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<decimal>("DealSum")
                         .HasColumnType("numeric");
@@ -45,7 +45,7 @@ namespace FP.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("integer");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.HasIndex("PackTypeId");
 
@@ -88,6 +88,9 @@ namespace FP.Migrations
                     b.Property<float>("BalanceInternal")
                         .HasColumnType("real");
 
+                    b.Property<int>("BalanceWalletId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("text");
@@ -103,15 +106,43 @@ namespace FP.Migrations
                     b.Property<int>("Rang")
                         .HasColumnType("integer");
 
+                    b.Property<int>("TopUpWalletId")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("BalanceWalletId");
+
+                    b.HasIndex("TopUpWalletId");
+
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("FP.Core.Database.Models.Wallet", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("WalletAddress")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("WalletSecretKey")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Wallets");
                 });
 
             modelBuilder.Entity("FP.Core.Database.Models.Pack", b =>
                 {
                     b.HasOne("FP.Core.Database.Models.PackType", "PackType")
-                        .WithMany("Packs")
+                        .WithMany()
                         .HasForeignKey("PackTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -127,9 +158,23 @@ namespace FP.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("FP.Core.Database.Models.PackType", b =>
+            modelBuilder.Entity("FP.Core.Database.Models.User", b =>
                 {
-                    b.Navigation("Packs");
+                    b.HasOne("FP.Core.Database.Models.Wallet", "BalanceWallet")
+                        .WithMany()
+                        .HasForeignKey("BalanceWalletId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FP.Core.Database.Models.Wallet", "TopUpWallet")
+                        .WithMany()
+                        .HasForeignKey("TopUpWalletId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BalanceWallet");
+
+                    b.Navigation("TopUpWallet");
                 });
 #pragma warning restore 612, 618
         }
