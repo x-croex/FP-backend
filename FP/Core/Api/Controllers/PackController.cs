@@ -25,7 +25,7 @@ public class PackController : ControllerBase
     }
 
 
-	[HttpGet("create")]
+	[HttpPost("create")]
 	public async Task<IActionResult> CreatePackAsync([FromBody] PackDto pack)
 	{
 		var jwt = Request.Cookies["jwt"];

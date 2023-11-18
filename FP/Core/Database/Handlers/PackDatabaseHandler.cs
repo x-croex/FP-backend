@@ -23,10 +23,10 @@ namespace FP.Core.Database.Handlers
 			string status = "Ok";
 			Pack pack = new()
 			{
-				UserId = userId,
 				EndDate = packDto.EndDate,
 				DealSum = packDto.DealSum,
-				StartDate = DateTime.UtcNow
+				StartDate = DateTime.UtcNow,
+				User = await _dbContext.Users.FindAsync(userId)
 			};
 			try
 			{

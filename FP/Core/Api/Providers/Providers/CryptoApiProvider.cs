@@ -30,4 +30,5 @@ public class CryptoApiProvider : ICryptoApiProvider
         var updated = await response.Content.ReadFromJsonAsync<CryptoTrc20WalletBalance>();
         return updated?.Balance;
     }
+
 }

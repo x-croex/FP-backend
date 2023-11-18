@@ -5,9 +5,12 @@ using FP.Core.Database;
 using FP.Core.Database.Handlers;
 using FP.Core.Database.Models;
 using FP.Core.Loger;
+using Google.Api;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Net.Http.Headers;
+using TronNet;
+using TronNet.Accounts;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,9 +26,15 @@ builder.Services.AddScoped<WalletDatabaseHandler>();
 
 builder.Services.AddScoped<JwtService>();
 builder.Services.AddScoped<ICryptoApiProvider, CryptoApiProvider>();
-
 builder.Services.AddTransient<IPasswordHasher<User>, PasswordHasher<User>>();
 builder.Services.AddTransient<IPasswordHasher<Wallet>, PasswordHasher<Wallet>>();
+builder.Services.AddTronNet(x =>
+{
+	x.Network = TronNetwork.MainNet;
+	x.Channel = new GrpcChannelOption { Host = "grpc.shasta.trongrid.io", Port = 50051 };
+	x.SolidityChannel = new GrpcChannelOption { Host = "grpc.shasta.trongrid.io", Port = 50052 };
+	x.ApiKey = "c71f2212-2803-4128-a265-719a3425d882";
+});
 
 builder.Services.AddHttpClient("Crypto", client => 
 { 

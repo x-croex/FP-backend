@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Projects\\C++\\FP\\FP\\FP.csproj": {}
+    "C:\\Users\\legen\\source\\repos\\FP-backend\\FP\\FP.csproj": {}
   },
   "projects": {
-    "F:\\Projects\\C++\\FP\\FP\\FP.csproj": {
+    "C:\\Users\\legen\\source\\repos\\FP-backend\\FP\\FP.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Projects\\C++\\FP\\FP\\FP.csproj",
+        "projectUniqueName": "C:\\Users\\legen\\source\\repos\\FP-backend\\FP\\FP.csproj",
         "projectName": "FP",
-        "projectPath": "F:\\Projects\\C++\\FP\\FP\\FP.csproj",
-        "packagesPath": "C:\\Users\\vorob\\.nuget\\packages\\",
-        "outputPath": "F:\\Projects\\C++\\FP\\FP\\obj\\",
+        "projectPath": "C:\\Users\\legen\\source\\repos\\FP-backend\\FP\\FP.csproj",
+        "packagesPath": "C:\\Users\\legen\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\legen\\source\\repos\\FP-backend\\FP\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "F:\\Download\\Programms\\NuGetPackages"
+          "E:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\vorob\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\legen\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

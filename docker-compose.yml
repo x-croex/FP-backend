@@ -1,8 +1,25 @@
-version: '3.4'
-
 services:
   fp:
     image: ${DOCKER_REGISTRY-}fp
     build:
       context: .
       dockerfile: FP/Dockerfile
+    ports:
+      - 8080:80
+    env_file: .env
+  postgres:
+    image: postgres:latest
+    env_file: .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - 5430:5432
+  crypto:
+    image: crypto:v1
+    env_file: python.env
+    ports:
+      - 5010:5010
+  
+
+volumes:
+  postgres_data:
