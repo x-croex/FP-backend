@@ -103,5 +103,12 @@ public class UserDatabaseHandler
 		}
 
 	}
-	
+	public async Task<Wallet?> GetUserWalletById(int userId)
+	{
+		_logger.LogInformation("Start to find user in database {userId}", userId);
+		var user = await _dbContext.Users.Include<User, Wallet>(u => u.BalanceWallet).FirstOrDefaultAsync(u => userId == u.Id);
+		return user.BalanceWallet;
+	}
+
+
 }

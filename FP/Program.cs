@@ -1,13 +1,17 @@
+using FP.Core.Api.ApiDto;
 using FP.Core.Api.Helpers;
 using FP.Core.Api.Providers.Interfaces;
 using FP.Core.Api.Providers.Providers;
+using FP.Core.Api.Providers.Providers.Networks.TRC20;
 using FP.Core.Database;
 using FP.Core.Database.Handlers;
 using FP.Core.Database.Models;
 using FP.Core.Loger;
 using Google.Api;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Org.BouncyCastle.Asn1.Ocsp;
 using System.Net.Http.Headers;
 using TronNet;
 using TronNet.Accounts;
@@ -26,8 +30,9 @@ builder.Services.AddScoped<WalletDatabaseHandler>();
 
 builder.Services.AddScoped<JwtService>();
 builder.Services.AddScoped<ICryptoApiProvider, CryptoApiProvider>();
+builder.Services.AddScoped<ICryptoApiTRC20Provider, CryptoApiTRC20Provider>();
 builder.Services.AddTransient<IPasswordHasher<User>, PasswordHasher<User>>();
-builder.Services.AddTransient<IPasswordHasher<Wallet>, PasswordHasher<Wallet>>();
+builder.Services.AddTransient<IPasswordHasher<WalletDto>, PasswordHasher<WalletDto>>();
 builder.Services.AddTronNet(x =>
 {
 	x.Network = TronNetwork.MainNet;
@@ -57,7 +62,25 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+//app.Use(async (context, next) => {
+//	var jwt = context.Request.Cookies["jwt"];
+//	if (jwt == null)
+//	{
+//		context.Response.StatusCode = StatusCodes.Status401Unauthorized; return;
+//	}
+//	var jwtService = context.RequestServices.GetRequiredService<JwtService>();
+//	var token = jwtService.Verify(jwt);
+//	var isSuccess = int.TryParse(token.Issuer, out int userId);
+//	if (isSuccess)
+//	{
+//		context.Items["userId"] = userId;
+//		await next();
+//	}
+//	else
+//	{
+//		context.Response.StatusCode = StatusCodes.Status401Unauthorized; return;
+//	}
+//});
 app.UseAuthorization();
 
 app.UseCors(options => options

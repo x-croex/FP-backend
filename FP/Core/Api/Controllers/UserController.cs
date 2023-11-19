@@ -5,6 +5,7 @@ using Loger;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using FP.Core.Api.Helpers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FP.Core.Api.Controllers;
 

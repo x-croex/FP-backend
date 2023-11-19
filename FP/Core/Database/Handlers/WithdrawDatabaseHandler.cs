@@ -13,9 +13,9 @@ namespace FP.Core.Database.Handlers
 		private readonly ILogger<WalletDatabaseHandler> _logger;
 		private readonly FpDbContext _dbContext;
 		private readonly IServiceProvider _serviceProvider;
-		private readonly ICryptoApiProvider _cryptoApiProvider;
+		private readonly ICryptoApiTRC20Provider _cryptoApiProvider;
 
-		public WithdrawDatabaseHandler(FpDbContext dbContext, IServiceProvider service, ILogger<WalletDatabaseHandler> logger, ICryptoApiProvider cryptoApiProvider)
+		public WithdrawDatabaseHandler(FpDbContext dbContext, IServiceProvider service, ILogger<WalletDatabaseHandler> logger, ICryptoApiTRC20Provider cryptoApiProvider)
 		{
 			_dbContext = dbContext;
 			_serviceProvider = service;
